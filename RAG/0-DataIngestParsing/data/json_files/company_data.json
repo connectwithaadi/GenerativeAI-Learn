@@ -1,0 +1,57 @@
+{
+  "company": "AK Unity",
+  "employees": [
+    {
+      "id": 1,
+      "name": "Aditya Kumar Singh",
+      "role": "AI Engineer",
+      "skills": [
+        "Python",
+        "GenerativeAI",
+        "Machine Learning"
+      ],
+      "projects": [
+        {
+          "name": "RAG System",
+          "status": "In Progress"
+        },
+        {
+          "name": "Data Pipeline",
+          "status": "Completed"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Connectwithaadi",
+      "role": "RAG Engineer",
+      "skills": [
+        "AgenticAI",
+        "GenerativeAI",
+        "Machine Learning"
+      ],
+      "projects": [
+        {
+          "name": "Multi AI Agent",
+          "status": "In Progress"
+        },
+        {
+          "name": "LLM Gateway",
+          "status": "Completed"
+        }
+      ]
+    }
+  ],
+  "department": {
+    "engineering": {
+      "head": "Mike Johnson",
+      "budget": 100000,
+      "team_size": 24
+    },
+    "data_scientist": {
+      "head": "sania khan",
+      "budget": 456666,
+      "team_size": 15
+    }
+  }
+}

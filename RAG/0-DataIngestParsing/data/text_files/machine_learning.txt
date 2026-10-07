@@ -1,0 +1,8 @@
+ Machine Learning Basics
+
+Machine Learning (ML) is a branch of Artificial Intelligence (AI) that enables computers to learn from data and make predictions or decisions without being explicitly programmed for every task. It uses algorithms to identify patterns in data and improve its performance with experience. Machine Learning is mainly divided into Supervised Learning, Unsupervised Learning, and Reinforcement Learning. It is widely used in recommendation systems, fraud detection, image recognition, speech recognition, self-driving cars, and medical diagnosis. For example, YouTube and Netflix use Machine Learning to recommend content according to user interests. ML helps organizations automate tasks, analyze large amounts of data, and make better decisions. With the rapid growth of data and computing power, Machine Learning has become an important technology in modern applications and is expected to play an even bigger role in the future.
+Key Points of Machine Learning
+- Learns from data
+- Identifies patterns
+- Makes predictions and decisions
+- Improves with experience

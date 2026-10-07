@@ -1,0 +1,8 @@
+Python Programming Introduction
+
+Python is a high-level, interpreted programming language that is easy to learn and used for building different types of applications.
+Key Features of Python
+1. Easy to Learn - Simple and readable syntax.
+2. Interpreted - Code runs directly without separate compilation.
+3. Dynamically Typed - Variable type declare karna zaroori nahi.
+4. Object-Oriented - Classes and objects support karta hai.
