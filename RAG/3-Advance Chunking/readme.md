@@ -15,7 +15,7 @@ The goal is to understand how document chunking affects retrieval quality and he
 │
 ├── 1-Semantic_Chunking.ipynb
 ├── README.md
-└── 33-Semantic-Chunking.pdf
+
 ```
 
 - **`1-Semantic_Chunking.ipynb`** — Custom semantic chunking, RAG pipeline implementation, and LangChain SemanticChunker.
