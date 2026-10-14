@@ -14,6 +14,7 @@ The goal is to understand how document chunking affects retrieval quality and he
 3-Advance Chunking/
 │
 ├── 1-Semantic_Chunking.ipynb
+├── langchain_intro.txt
 ├── README.md
 
 ```
