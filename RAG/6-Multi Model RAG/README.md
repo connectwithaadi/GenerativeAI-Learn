@@ -145,31 +145,7 @@ The model interprets the supplied information and generates a context-aware answ
 
 ## 🏗️ Architecture
 
-The following diagram represents the intended multimodal RAG workflow from the handwritten architecture notes.
-
-```mermaid
-flowchart TD
-    A[PDF Document] --> B[Extract Text and Images]
-
-    B --> C[Text Chunks]
-    B --> D[Extracted Images]
-
-    C --> E[Text Embeddings]
-    D --> F[Image Embeddings]
-
-    E --> G[FAISS Vector Index]
-    F --> G
-
-    H[User Query] --> I[Query Embedding]
-    I --> J[Retriever]
-    G --> J
-
-    J --> K[Top-K Relevant Context]
-    K --> L[Multimodal LLM]
-    H --> L
-
-    L --> M[Context-Aware Answer]
-```
+![Query Expansion RAG Architecture](Multi-Modal.png)
 
 ### Architecture Explanation
 
