@@ -9,6 +9,8 @@ It uses **LangChain, an LLM, and a CrewAI-related dataset** to explore query dec
 
 ---
 
+
+
 ## 🎯 Learning Objectives
 
 - Understand query decomposition in RAG systems.
@@ -19,6 +21,22 @@ It uses **LangChain, an LLM, and a CrewAI-related dataset** to explore query dec
 - Work with text datasets for retrieval experiments.
 - Understand how query decomposition fits into a RAG pipeline.
 - Explore the relationship between query enhancement and retrieval quality.
+
+---
+
+## 🔄 Architecture
+
+![Query Decomposition RAG Architecture](query-decomposition-architecture.png)
+
+The architecture illustrates how a complex user query can be decomposed into smaller sub-queries, retrieved independently, and combined to generate a context-aware answer.
+
+1. **User Query:** Receive a complex, multi-part question.
+2. **Query Decomposition:** Use an LLM and prompt to generate focused sub-queries.
+3. **Generated Sub-Queries:** Break the original question into distinct information requirements.
+4. **Parallel Retrieval:** Retrieve relevant documents for each sub-query.
+5. **Combine and Process Results:** Merge retrieved documents, remove duplicates, filter irrelevant results, and optionally rerank them.
+6. **LLM Answer Generation:** Combine the original query with the retrieved context to generate a comprehensive answer.
+
 
 ---
 
