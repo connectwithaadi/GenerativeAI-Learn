@@ -21,7 +21,23 @@ This project is part of my **Generative AI and RAG learning journey**, focusing 
 - Understand the limitations of query expansion, including additional retrieval cost and potentially irrelevant results.
 
 ---
+## 🔄 Architecture
 
+![Query Expansion RAG Architecture](query-expansion-architecture.png)
+
+The architecture illustrates how query expansion works with hybrid retrieval,
+document reranking, and LLM-based answer generation.
+
+1. **User Query:** Accept the original question.
+2. **Query Expansion:** Generate alternative search queries using an LLM.
+3. **Hybrid Retrieval:** Retrieve documents using dense and sparse search.
+4. **Top-K Documents:** Collect candidate documents.
+5. **Reranking:** Reorder documents by relevance.
+6. **Context Preparation:** Select relevant documents for the LLM.
+7. **RAG Generation:** Generate an answer using retrieved context.
+8. **Final Answer:** Return a context-aware response.
+
+---
 ## 📂 Project Structure
 
 ```text
