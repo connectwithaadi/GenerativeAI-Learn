@@ -70,7 +70,7 @@ flowchart TD
 ## 📂 Project Structure
 
 ```text
-7-Autonomous RAG/
+2-Autonomous RAG/
 │
 ├── 1-Chain of Thought/
 │   ├── 1-COTRag.ipynb
