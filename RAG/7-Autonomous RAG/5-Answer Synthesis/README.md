@@ -165,7 +165,7 @@ The system retrieves relevant information from internal notes, YouTube transcrip
 
 **Aditya Kumar Singh (Aadi)**
 
-AI/ML Engineer | Generative AI | Agentic AI | RAG Systems
+
 
 - GitHub: [@connectwithaadi](https://github.com/connectwithaadi)
 
