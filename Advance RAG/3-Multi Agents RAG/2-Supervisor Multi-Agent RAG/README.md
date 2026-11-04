@@ -1,134 +1,269 @@
-# 🤖 Multi-Agent Network — Collaborative AI Agents
+# Supervisor Multi-Agent RAG
 
-A collaborative **Multi-Agent AI System** built using LangGraph and LangChain, where specialized AI agents work together to perform research and generate high-quality content.
+A Supervisor-based Multi-Agent RAG system built using **LangGraph, LangChain, Groq, FAISS, HuggingFace Embeddings, and Tavily Search**.
 
-Instead of relying on a single LLM agent, this project follows a divide-and-conquer approach. Each agent is assigned a specific responsibility, enabling better task specialization, collaboration, and workflow orchestration.
+This project demonstrates how a central Supervisor Agent coordinates specialized AI agents to solve complex tasks through intelligent task delegation. The system combines internal knowledge retrieval, web research, and mathematical computation in a unified workflow.
 
-## 🎯 Project Overview
+## Overview
 
-This project implements a multi-agent network consisting of:
+A single AI agent can become less effective when handling multiple unrelated tasks. A Supervisor Multi-Agent architecture addresses this limitation by assigning tasks to specialized agents based on their capabilities.
 
-- **Researcher Agent:** Collects relevant information using internal research notes and web search.
-- **Content Writer Agent:** Generates detailed, structured blog content using the researcher's findings.
-- **LangGraph Workflow:** Orchestrates agent execution and manages collaboration through a shared message state.
+In this implementation, the Supervisor manages two specialized agents:
 
-### Key Features
+- **Research Agent:** Performs research-related tasks using web search and internal knowledge retrieval.
+- **Math Agent:** Handles mathematical computations using dedicated arithmetic tools.
+- **Supervisor Agent:** Analyzes the user's request, delegates tasks to the appropriate agent, and manages communication between agents.
 
-- Specialized AI agents with distinct responsibilities.
-- Internal knowledge retrieval using FAISS.
-- External information gathering using Tavily Search.
-- Collaborative agent communication.
-- LLM-powered content generation.
-- Graph-based workflow orchestration using LangGraph.
-
-## 🏗️ Architecture
+## Architecture
 
 ```mermaid
 flowchart TD
-    A(["👤 User Query"]) --> B["🧠 LangGraph Workflow"]
+    U[User Query] --> S[Supervisor Agent]
 
-    B --> C["🔬 Researcher Agent"]
+    S -->|Research Task| R[Research Agent]
+    S -->|Mathematical Task| M[Math Agent]
 
-    subgraph Research["Research Agent Tools"]
-        D["📚 Internal Research Notes"]
-        E["🌐 Tavily Web Search"]
-        F["🔎 FAISS Retriever"]
-    end
+    R --> W[Tavily Web Search]
+    R --> V[Internal RAG Retriever]
 
-    C --> D
-    D --> F
-    C --> E
+    V --> E[HuggingFace Embeddings]
+    E --> F[FAISS Vector Store]
+    F --> N[Research Notes]
 
-    F --> G["📄 Research Findings"]
-    E --> G
+    M --> A[Addition Tool]
+    M --> B[Multiplication Tool]
+    M --> D[Division Tool]
 
-    G --> H["🤝 Shared Message State"]
+    W --> R
+    V --> R
+    A --> M
+    B --> M
+    D --> M
 
-    H --> I["✍️ Content Writer Agent"]
+    R --> S
+    M --> S
 
-    I --> J["📝 Blog Generation"]
-
-    J --> K{"📋 Further Research Required?"}
-
-    K -- "Yes" --> C
-    K -- "No" --> L(["💬 Final Blog Output"])
-
-    style A fill:#2563eb,color:#fff
-    style B fill:#7c3aed,color:#fff
-    style C fill:#ca8a04,color:#fff
-    style I fill:#dc2626,color:#fff
-    style H fill:#0891b2,color:#fff
-    style L fill:#059669,color:#fff
+    S --> O[Final Response]
+    O --> U
 ```
 
-> The architecture diagram represents the intended collaboration workflow. The research-to-writer flow is implemented in the notebook; conditional research iteration can be developed as an enhancement.
+## Key Features
 
-## 🔄 Workflow
+- Supervisor-based multi-agent orchestration
+- Specialized Research and Math Agents
+- Agent-to-agent task delegation
+- Retrieval-Augmented Generation using internal research notes
+- Semantic search with HuggingFace embeddings
+- FAISS-based vector retrieval
+- Web research using Tavily Search
+- Tool calling for arithmetic operations
+- LangGraph-based agent workflow
+- Combined research and mathematical reasoning in a single query
 
-1. **User Input:** The user submits a task or topic for content generation.
-2. **Research:** The Researcher Agent analyzes the task and identifies relevant information.
-3. **Knowledge Retrieval:** Internal research notes are searched using FAISS.
-4. **Web Research:** Tavily Search retrieves relevant external information.
-5. **Context Sharing:** Research findings are shared through LangGraph's message state.
-6. **Content Generation:** The Content Writer Agent uses the collected information to generate a detailed blog.
-7. **Collaboration:** Agents can exchange information to improve the final deliverable.
-8. **Final Output:** A comprehensive blog is returned to the user.
-
-## 🛠️ Technology Stack
+## Tech Stack
 
 | Technology | Purpose |
 |---|---|
 | Python | Core programming language |
-| LangChain | LLM and tool integration |
-| LangGraph | Multi-agent workflow orchestration |
+| LangChain | Agent and tool development |
+| LangGraph | Agent workflow orchestration |
+| LangGraph Supervisor | Supervisor-based delegation |
 | Groq | LLM inference |
-| FAISS | Vector-based knowledge retrieval |
-| HuggingFace Embeddings | Text embedding generation |
-| Tavily Search | Web research |
-| Wikipedia | Potential external knowledge source |
+| GPT-OSS 120B | Language model |
+| HuggingFace | Text embeddings |
+| Sentence Transformers | Embedding model |
+| FAISS | Vector storage and retrieval |
+| Tavily | Web search |
+| RecursiveCharacterTextSplitter | Document chunking |
+| dotenv | Environment variable management |
 
-## 📂 Project Structure
+## Agents
+
+### 1. Research Agent
+
+The Research Agent specializes in information retrieval and research tasks.
+
+**Tools:**
+- Tavily Web Search
+- Internal Research Notes Retriever
+
+The internal retriever uses FAISS to search relevant information from the research notes.
+
+### 2. Math Agent
+
+The Math Agent specializes in numerical calculations.
+
+**Tools:**
+- Addition
+- Multiplication
+- Division
+
+Mathematical operations are handled through Python functions instead of relying solely on LLM-generated calculations.
+
+### 3. Supervisor Agent
+
+The Supervisor acts as the central orchestrator.
+
+Responsibilities:
+- Understand the user's query
+- Identify the required task type
+- Route tasks to specialized agents
+- Manage agent communication
+- Receive agent responses
+- Return the final response
+
+The current implementation assigns work to one agent at a time.
+
+## RAG Pipeline
+
+The internal knowledge retrieval pipeline follows these steps:
+
+1. Load research notes using `TextLoader`.
+2. Split documents into chunks using `RecursiveCharacterTextSplitter`.
+3. Generate embeddings using `all-MiniLM-L6-v2`.
+4. Store document embeddings in FAISS.
+5. Retrieve relevant chunks based on the research query.
+6. Provide retrieved context to the Research Agent.
+
+### Configuration
+
+| Parameter | Value |
+|---|---|
+| Embedding Model | `sentence-transformers/all-MiniLM-L6-v2` |
+| Chunk Size | 500 |
+| Chunk Overlap | 50 |
+| Vector Store | FAISS |
+| Web Search Results | 3 |
+| LLM | `openai/gpt-oss-120b` |
+| Temperature | 0 |
+
+## Project Structure
 
 ```text
-3-Multi Agents RAG/
+2-Supervisor-Multi-Agent-RAG/
 │
-├── 1-Multi Agent Network/
-│   ├── multiagent.ipynb
-│   ├── research_notes.txt
-│   └── README.md
-│
-└── README.md
+├── README.md
+├── supervisor_multiagent.ipynb
+└── research_notes.txt
 ```
 
-## 🎓 Learning Objectives
+## Installation and Setup
 
-- Understand Multi-Agent AI architectures.
-- Build specialized agents using LangGraph.
-- Implement collaborative agent workflows.
-- Integrate internal RAG with external web search.
-- Share context between agents using graph state.
-- Understand the divide-and-conquer approach to AI systems.
-- Explore agent collaboration and workflow orchestration.
+### 1. Clone the Repository
 
-## 🚀 Future Enhancements
+```bash
+git clone https://github.com/connectwithaadi/GenerativeAI-Learn.git
+cd GenerativeAI-Learn
+```
 
-- Introduce a Supervisor Agent for dynamic task routing.
-- Implement a dedicated Self-Reflection Agent.
-- Add iterative research and content refinement.
-- Integrate hybrid retrieval using BM25 and FAISS.
-- Add source citation and fact verification.
-- Implement agent execution monitoring and tracing.
-- Introduce conditional routing and retry mechanisms.
+Navigate to the project directory:
 
-## 👨‍💻 Author
+```bash
+cd "Advance RAG/3-Multi Agents RAG/2-Supervisor Multi-Agent RAG"
+```
 
-**Aditya Kumar Singh (Aadi)**
+### 2. Install Dependencies
 
-AI/ML Engineer | Generative AI | Agentic AI | RAG Systems
+Install the required packages:
 
-GitHub: [@connectwithaadi](https://github.com/connectwithaadi)
+```bash
+pip install langchain
+pip install langchain-groq
+pip install langgraph
+pip install langgraph-supervisor
+pip install langchain-tavily
+pip install langchain-community
+pip install langchain-huggingface
+pip install langchain-text-splitters
+pip install faiss-cpu
+pip install sentence-transformers
+pip install python-dotenv
+```
+
+### 3. Configure Environment Variables
+
+Create a `.env` file in the project directory.
+
+```env
+GROQ_API_KEY=your_groq_api_key
+TAVILY_API_KEY=your_tavily_api_key
+```
+
+Obtain API keys from:
+
+- [Groq Console](https://console.groq.com/)
+- [Tavily](https://tavily.com/)
+
+Never commit your `.env` file to GitHub.
+
+### 4. Run the Notebook
+
+Open the notebook:
+
+```bash
+jupyter notebook supervisor_multiagent.ipynb
+```
+
+Execute the notebook cells sequentially to initialize the model, tools, agents, and Supervisor workflow.
+
+## Example Usage
+
+```python
+response = supervisor.invoke({
+    "messages": (
+        "List transformer variants in production deployments "
+        "from the retriever and then tell me what is 5 plus 10."
+    )
+})
+
+print(response["messages"][-1].content)
+```
+
+### Workflow
+
+1. The Supervisor receives the user query.
+2. The Research Agent retrieves transformer-related information from internal research notes.
+3. The Math Agent calculates the requested sum.
+4. The Supervisor receives the outputs and returns the response.
+
+This demonstrates how multiple specialized agents can collaborate to solve a compound query.
+
+## Learning Objectives
+
+By completing this project, you will understand:
+
+- Multi-Agent System Architecture
+- Supervisor-based Agent Orchestration
+- Task Delegation and Routing
+- Agent Specialization
+- Tool Calling
+- Retrieval-Augmented Generation
+- FAISS Vector Search
+- LangGraph Agent Workflows
+- Combining RAG with Multi-Agent Systems
+
+## Future Improvements
+
+- Add more specialized agents
+- Implement parallel agent execution
+- Introduce a structured state management system
+- Add conversation memory
+- Implement agent-level error handling
+- Add evaluation metrics for routing accuracy and retrieval quality
+- Build a Streamlit interface
+- Integrate SQL and external APIs as additional retrieval tools
+
+## References
+
+- [LangGraph Documentation](https://docs.langchain.com/oss/python/langgraph/overview)
+- [LangChain Documentation](https://docs.langchain.com/oss/python/langchain/overview)
+- [LangGraph Supervisor](https://github.com/langchain-ai/langgraph-supervisor)
+- [FAISS Documentation](https://github.com/facebookresearch/faiss)
+- [HuggingFace](https://huggingface.co/)
+- [Tavily](https://docs.tavily.com/)
 
 ---
 
-⭐ This project is part of my Generative AI and Agentic AI learning journey.
+**Author:** Aditya Kumar Singh
 
+**GitHub:** [connectwithaadi](https://github.com/connectwithaadi)
