@@ -1,66 +1,66 @@
 # 🤖 Agentic AI — Building Intelligent AI Agents
 
-Welcome to **Agentic AI**, a comprehensive learning repository focused on understanding and building intelligent AI agents using modern frameworks and technologies.
+Welcome to **Agentic AI**, a hands-on learning repository focused on exploring and building intelligent AI agents using modern frameworks such as LangGraph and LangChain.
 
-This repository explores the fundamentals of AI agents, graph-based workflows, agent architectures, tool calling, reasoning, and Agentic RAG systems through hands-on implementations and practical experiments.
+This repository covers the fundamentals of graph-based workflows, AI agent architectures, tool calling, state management, and Agentic Retrieval-Augmented Generation (RAG).
 
-The goal is to develop a strong foundation in **Agentic AI, autonomous workflows, and intelligent AI application development.**
+The objective is to develop a strong understanding of how AI agents reason, interact with tools, manage workflows, and perform intelligent tasks.
 
 ---
 
 ## 📚 Concepts Covered
 
-### 1. LangGraph Basics
+### 1️⃣ LangGraph Basics
 
 Explore the fundamentals of LangGraph and learn how to build stateful AI workflows using graphs, nodes, edges, and structured state management.
 
-Topics covered:
-- Building simple graphs and workflows
-- Implementing chatbots using LangGraph
-- Managing state with TypedDict and DataClasses
-- Pydantic-based data validation
-- Building LLM chains and tool-calling workflows
+**Topics Covered:**
+- Simple Graph Construction
+- Chatbot Development
+- DataClass State Schema
+- Pydantic-Based State Validation
+- LLM Chains
 
-📂 **Resources:**
+📂 **Notebooks & Resources**
 
-- [📖 LangGraph Basics — README](./1-LangGraph%20Basics/README.md)
-- [1. Simple Graph](./1-LangGraph%20Basics/1-simplegraph.ipynb)
-- [2. Chatbot](./1-LangGraph%20Basics/2-Chatbot.ipynb)
-- [3. DataClass State Schema](./1-LangGraph%20Basics/3-DataClass-StateSchema.ipynb)
-- [4. Pydantic](./1-LangGraph%20Basics/4-Pydantic.ipynb)
-- [5. Chains](./1-LangGraph%20Basics/5-Chains.ipynb)
+- [📁 LangGraph Basics](https://github.com/connectwithaadi/GenerativeAI-Learn/tree/main/Agentic%20AI/1-LangGraph%20Basics)
+- [1. Simple Graph](https://github.com/connectwithaadi/GenerativeAI-Learn/blob/main/Agentic%20AI/1-LangGraph%20Basics/1-simplegraph.ipynb)
+- [2. Chatbot](https://github.com/connectwithaadi/GenerativeAI-Learn/blob/main/Agentic%20AI/1-LangGraph%20Basics/2-Chatbot.ipynb)
+- [3. DataClass State Schema](https://github.com/connectwithaadi/GenerativeAI-Learn/blob/main/Agentic%20AI/1-LangGraph%20Basics/3-DataClass-StateSchema.ipynb)
+- [4. Pydantic](https://github.com/connectwithaadi/GenerativeAI-Learn/blob/main/Agentic%20AI/1-LangGraph%20Basics/4-Pydantic.ipynb)
+- [5. Chains](https://github.com/connectwithaadi/GenerativeAI-Learn/blob/main/Agentic%20AI/1-LangGraph%20Basics/5-Chains.ipynb)
 
-### 2. Agents Architecture
+### 2️⃣ Agents Architecture
 
-Understand how AI agents are designed, how they interact with tools, and how their execution can be controlled and monitored.
+Understand how AI agents are structured, how they interact with tools, and how their execution can be controlled and monitored.
 
-Topics covered:
-- ReAct Agent architecture
-- Streaming responses
-- Agent debugging
-- Agent execution workflows
+**Topics Covered:**
+- ReAct Agent Architecture
+- Streaming Responses
+- Agent Debugging
+- Agent Execution Workflows
 
-📂 **Resources:**
+📂 **Resources**
 
-- [📖 Agents Architecture — README](./2-Agents%20Architecture/README.md)
-- [ReAct Agent](./2-Agents%20Architecture/1-ReActAgent/)
-- [Streaming](./2-Agents%20Architecture/2-Streaming/)
-- [Debugging](./2-Agents%20Architecture/Debugging/)
+- [📁 Agents Architecture](https://github.com/connectwithaadi/GenerativeAI-Learn/tree/main/Agentic%20AI/2-Agents%20Architecture)
+- [1. ReAct Agent](https://github.com/connectwithaadi/GenerativeAI-Learn/tree/main/Agentic%20AI/2-Agents%20Architecture/1-ReActAgent)
+- [2. Streaming](https://github.com/connectwithaadi/GenerativeAI-Learn/tree/main/Agentic%20AI/2-Agents%20Architecture/2-Streaming)
+- [3. Debugging](https://github.com/connectwithaadi/GenerativeAI-Learn/tree/main/Agentic%20AI/2-Agents%20Architecture/Debugging)
 
-### 3. Agentic RAG
+### 3️⃣ Agentic RAG
 
 Explore intelligent Retrieval-Augmented Generation systems that combine LLM reasoning, retrieval mechanisms, and agentic decision-making.
 
-Topics covered:
+**Topics Covered:**
 - Agentic Retrieval-Augmented Generation
-- Intelligent retrieval workflows
-- LLM-powered reasoning
-- Context-aware response generation
+- Intelligent Retrieval Workflows
+- LLM-Powered Reasoning
+- Context-Aware Response Generation
 
-📂 **Resources:**
+📂 **Resources**
 
-- [📖 Agentic RAG — README](./3-Agentic%20RAG/README.md)
-- [Agentic RAG Implementation](./3-Agentic%20RAG/1-AgenticRAG/)
+- [📁 Agentic RAG](https://github.com/connectwithaadi/GenerativeAI-Learn/tree/main/Agentic%20AI/3-Agentic%20RAG)
+- [1. Agentic RAG Implementation](https://github.com/connectwithaadi/GenerativeAI-Learn/tree/main/Agentic%20AI/3-Agentic%20RAG/1-AgenticRAG)
 
 ---
 
@@ -71,7 +71,7 @@ Through this repository, I am exploring:
 - Understanding the architecture of AI agents.
 - Building stateful workflows using LangGraph.
 - Implementing LLM-powered chatbots.
-- Managing graph state and data validation.
+- Managing graph state using structured schemas.
 - Integrating tools with LLMs.
 - Understanding ReAct-based reasoning and action execution.
 - Debugging and monitoring agent workflows.
@@ -115,8 +115,8 @@ Agentic AI/
 - LangGraph
 - Large Language Models (LLMs)
 - Pydantic
-- TypedDict
 - DataClasses
+- TypedDict
 - AI Agents
 - Retrieval-Augmented Generation (RAG)
 - Tool Calling
@@ -146,4 +146,3 @@ GitHub: [@connectwithaadi](https://github.com/connectwithaadi)
 ---
 
 ⭐ This project is part of my Generative AI and Agentic AI learning journey.
-
